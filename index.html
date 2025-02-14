@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello!</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Make sure everything is centered */
+            overflow: hidden; /* Prevents unwanted scrolling */
+            position: relative; /* Needed for button positioning */
+        }
+
+        img {
+            margin: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-header {
+            font-size: 20px;
+            font-family: "Brush Script", cursive;
+            text-align: center;
+        }
+
+        .button-holder {
+            display: flex;
+            margin: 10px;
+            justify-content: center;
+            position: relative;
+            width: 300px; /* Keep the buttons within a set area */
+            height: 50px;
+        }
+
+        .yes-button button {
+            background-color: pink;
+            border-color: pink;
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .no-button button {
+            background-color: grey;
+            border-color: grey;
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-image">
+        <img src="https://cdn.fbsbx.com/v/t59.2708-21/477624612_545474605173517_3695538321113842987_n.gif?_nc_cat=110&ccb=1-7&_nc_sid=cf94fc&_nc_eui2=AeGSoJsvq8rf4TY0ejX3O9o9K6G9Cjs0tBIrob0KOzS0Ehd-Ws547lgW1g2AnObBonjfIPPhuTg9Buf5m20ogQdr&_nc_ohc=BOyhfIUuKzUQ7kNvgG-VqDn&_nc_oc=Adg1QJV9gl0sD0sICGbNIPfnuBTUPwTng6t7kirEHlTMivRZRD9zXJNezXyNcAa3D9AfRHPIGMNNnPCUUUe1pRsZ&_nc_zt=7&_nc_ht=cdn.fbsbx.com&_nc_gid=AMd3HsHn4M0sIs74TI2Ss2I&oh=03_Q7cD1gGLYZKDUStlGG4f8pHb8BKVtrvxI7HGfRBgFNaMNShWHQ&oe=67AFFC7F" alt="Valentines Gif"/>
+    </div>
+
+    <div class="text-header">
+        <h1>Will You Be My Valentine?</h1>
+    </div>
+
+    <div class="button-holder">
+        <div class="yes-button">
+            <button onclick="yesClick()">YES!</button>
+        </div>
+
+        <div class="no-button" id="growButton">
+            <button onclick="moveButton()" onmouseover="moveButton()">NO!</button>
+        </div>
+    </div>
+
+    <script>
+        function moveButton() {
+            const button = document.querySelector("#growButton button");
+            
+            // Get button dimensions
+            const buttonWidth = button.offsetWidth;
+            const buttonHeight = button.offsetHeight;
+
+            // Ensure the button stays within bounds
+            const maxX = 300 - buttonWidth - 10; // Avoid overflow
+            const maxY = 150 - buttonHeight - 10;
+
+            // Generate random coordinates within safe bounds
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            button.style.position = "absolute"; 
+            button.style.left = `${randomX}px`; 
+            button.style.top = `${randomY}px`;
+        }
+
+        function yesClick() {
+            alert("Yay! 😍 See you on Valentine's Day! ❤️");
+            window.location.href = "page2.html"; 
+        }
+    </script>
+</body>
+</html>
